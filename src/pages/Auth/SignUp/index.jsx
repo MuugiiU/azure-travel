@@ -44,7 +44,7 @@ render () {
           required
           fullWidth
           id="email"
-          label="Email Address"
+          label="И-Мэйл Хаяг"
           name="email"
           autoComplete="email"
           autoFocus
@@ -54,14 +54,24 @@ render () {
           required
           fullWidth
           name="password"
-          label="Password"
+          label="Нууц дугаар"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+        />
+         <TextField
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Нууц дугаараа дахин хийнэ үү"
           type="password"
           id="password"
           autoComplete="current-password"
         />
         <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
+          label="Намайг сана"
         />
         <Button
           type="submit"
@@ -73,15 +83,13 @@ render () {
         </Button>
         <Grid container>
           <Grid item xs>
-            <Link href="#" variant="body2">
-              Forgot password?
-            </Link>
+            
           </Grid>
           <Grid item>
           <Button variant="text" onClick={()=>{
             this.props.setIsSignIn(true)
           }}>
-              {"Don't have an account? Нэвтрэх"}
+              {"Бүртгэлгүй байна? Нэвтрэх"}
             </Button>
           </Grid>
         </Grid>

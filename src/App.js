@@ -1,11 +1,13 @@
 import { CssBaseline } from "@mui/material";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+// import Navbar from "./components/Navbar";
 import Login from "./pages/Auth/";
 import  Home from "./pages/Home" ;
 function App() {
   return (
     <Router>
        <CssBaseline/>
+       {/* <Navbar/> */}
       <Routes>
        
         <Route path='/login' element={<Login/>}/>

@@ -43,7 +43,7 @@ const index=(props)=> {
           required
           fullWidth
           id="email"
-          label="Email Address"
+          label="И-Майл Хаяг"
           name="email"
           autoComplete="email"
           autoFocus
@@ -53,14 +53,14 @@ const index=(props)=> {
           required
           fullWidth
           name="password"
-          label="Password"
+          label="Нууц дугаар"
           type="password"
           id="password"
           autoComplete="current-password"
         />
         <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
-          label="Remember me"
+          label="Намайг сана"
         />
         <Button
           type="submit"
@@ -73,14 +73,14 @@ const index=(props)=> {
         <Grid container>
           <Grid item xs>
             <Link href="#" variant="body2">
-              Forgot password?
+              Пасспортоо мартсан уу?
             </Link>
           </Grid>
           <Grid item>
           <Button variant="text" onClick={()=>{
             props.setIsSignIn(false)
           }}>
-              {"Don't have an account? Бүртгүүлэх"}
+              {"Бүртгэлгүй байна? Бүртгүүлэх"}
             </Button>
           </Grid>
         </Grid>
