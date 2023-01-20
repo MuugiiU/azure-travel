@@ -1,9 +1,10 @@
-import { Search } from "@mui/icons-material";
+import { Category, Search } from "@mui/icons-material";
 import { Container, Grid, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import React from "react";
 import DrawerAppBar from "../../components/navbar";
 import Searchh from "../../components/searchh";
+import Category_component from "../../components/Category";
 const Hero = () => {
   return (
     <Grid
@@ -30,6 +31,7 @@ const Hero = () => {
         awaits.
       </Typography>
       <Searchh />
+      <Category_component />
     </Grid>
   );
 };
