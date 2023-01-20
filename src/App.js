@@ -7,10 +7,7 @@ import Hero from "./pages/Hero";
 function App() {
   return (
     <Router>
-      
        <CssBaseline/>
-      
-       <Hero/>
       <Routes>
        
         <Route path='/login' element={<Login/>}/>

@@ -74,6 +74,7 @@ function DrawerAppBar(props) {
                 {item}
               </Button>
             ))}
+            <Button variant='text' sx={{color:'white'}}>Sign Up</Button>
           </Box>
         </Toolbar>
       </AppBar>
