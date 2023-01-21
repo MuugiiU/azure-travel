@@ -1,10 +1,10 @@
-import { Category, Search } from "@mui/icons-material";
-import { Container, Grid, Typography } from "@mui/material";
-import { red } from "@mui/material/colors";
+import { Grid, Typography } from "@mui/material";
+
 import React from "react";
 import DrawerAppBar from "../../components/navbar";
 import Searchh from "../../components/searchh";
 import Category_component from "../../components/Category";
+import Vacation from "../../components/Vacation";
 const Hero = () => {
   return (
     <Grid
@@ -32,6 +32,7 @@ const Hero = () => {
       </Typography>
       <Searchh />
       <Category_component />
+      <Vacation />
     </Grid>
   );
 };
