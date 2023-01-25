@@ -9,30 +9,32 @@ const Hero = () => {
   return (
     <Grid
       sx={{
-        position: "absolute",
-        top: 0,
         width: "100%",
         height: "100%",
-        top: "20%",
-        left: "10%",
+        position: "relative",
         bottom: "40px",
       }}
     >
-      <Typography
-        variant="h1"
-        sx={{
-          color: "white",
-          fontSize: "72px",
-          lineHeight: "83px",
-          top: "15%",
-        }}
-      >
-        The whole world <br />
-        awaits.
-      </Typography>
-      <Searchh />
-      <Category_component />
-      <Vacation />
+      <Grid sx={{ margin: "10%" }}>
+        <Typography
+          variant="h1"
+          sx={{
+            color: "white",
+            fontSize: "72px",
+            lineHeight: "83px",
+            top: "15%",
+          }}
+        >
+          The whole world <br />
+          awaits.
+        </Typography>
+        <Searchh />
+        <Category_component />
+      </Grid>
+      <Grid sx={{ marginLeft: "10%" }}>
+        {" "}
+        <Vacation />
+      </Grid>
     </Grid>
   );
 };

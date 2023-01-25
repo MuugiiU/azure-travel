@@ -1,19 +1,17 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import AuthPage from "../Auth";
+
 import { Grid, imageListClasses } from "@mui/material";
 import DrawerAppBar from "../../components/navbar";
 import Hero from "../Hero";
-
+import Main from "../Main";
+import Modal from "@mui/material/Modal";
+import AuthPage from "../Auth";
+import { Typography, Box } from "@mui/material";
 const style = {
   position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
+  top: "calc(50% - 280px)",
+  left: "calc(50% - 200px)",
+  width: "400px",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -25,18 +23,25 @@ const Home = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <Grid sx={{ background:"url(./img/bgpic.png)",height: "100vh" , width:"100%"}}>
-      <DrawerAppBar />
-   
-      <Hero />
-    </Grid>
-  );
-};
-
-export default Home;
-
-{
-  /* <Button onClick={handleOpen}>Нэвтрэх</Button>
+    <>
+      <Grid
+        sx={{
+          background: "url(./img/bgpic.png)",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          height: "100vh",
+          width: "100%",
+        }}
+      >
+        <DrawerAppBar
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+          style={style}
+          open={open}
+        />
+        <Hero />
+        <Main />
+      </Grid>
       <Modal
         open={open}
         onClose={handleClose}
@@ -44,10 +49,13 @@ export default Home;
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          <AuthPage/>
+          <Typography id="modal-modal-description">
+            <AuthPage />
           </Typography>
         </Box>
-      </Modal> */
-}
+      </Modal>
+    </>
+  );
+};
+
+export default Home;

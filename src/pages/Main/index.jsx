@@ -1,10 +1,13 @@
-import React from 'react';
-import Offser from '../../components/Offser';
+import { Grid } from "@mui/material";
+import React from "react";
+import Offser from "../../components/Offser";
 
 const Main = () => {
   return (
-   <Offser/>
-  )
-}
+    <Grid sx={{}}>
+      <Offser />
+    </Grid>
+  );
+};
 
 export default Main;
