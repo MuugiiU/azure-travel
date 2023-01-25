@@ -5,46 +5,50 @@ import { SwipeableDrawer } from "@mui/material";
 import vacationData from "../../data/vacation";
 const Vacation = () => {
   return (
-    <Grid sx={{ marginTop: "100px", position: "relative" }}>
-      <Typography variant="h3" sx={{ color: "white", fontSize: "32px" }}>
+    <Grid>
+       <Typography variant="h3" sx={{  fontSize: "32px",color:"white" }}>
         {" "}
         Top Vacation
       </Typography>
+  
+    <Grid sx={{ marginTop: "10px", position:"relative",  overflowX: "auto", overflowY:"hidden",   "&::-webkit-scrollbar": {
+          display: "none",
+        },}}>
+     
       <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 5,
-          top: "70px",
-          position: "absolute",
-        }}
+       sx={{
+      gap:"60px",
+        display:"flex",
+      }}
       >
-        {vacationData.map((vacationData, index) => {
-          return (
+        {vacationData.map((vacationData, index) => (
             <Box
               sx={{
                 top: "170px",
-                width: "300px",
-                height: "200px",
+                width: "250px",
+                borderRadius:"10px",
+               
               }}
               key={index}
             >
-              <img width="100%" height="100%" src={vacationData.img} alt="" />
+              <img width="300px" height="200px" src={vacationData.img} alt="" />
               <Typography
                 variant="h3"
                 sx={{
-                  color: "white",
+                  color:"white",
                   fontSize: "24px",
                   position: " absolute",
                   top: "160px",
-                }}
+                  padding:"10px"
+        }}
               >
                 {vacationData.title}
               </Typography>
             </Box>
-          );
-        })}
+        )
+        )}
       </Box>
+    </Grid>
     </Grid>
   );
 };

@@ -3,7 +3,7 @@ import React from "react";
 import Categories from "../../data/Categories";
 const Category_component = () => {
   return (
-    <Grid sx={{ marginTop: "120px" }}>
+    <Grid sx={{ marginTop: "10%" }}>
       <Typography variant="h3" sx={{ color: "white", fontSize: "32px" }}>
         {" "}
         Top categories

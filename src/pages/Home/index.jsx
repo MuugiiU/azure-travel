@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AuthPage from "../Auth";
-import { Grid } from "@mui/material";
+import { Grid, imageListClasses } from "@mui/material";
 import DrawerAppBar from "../../components/navbar";
 import Hero from "../Hero";
 
@@ -25,9 +25,9 @@ const Home = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <Grid sx={{ background: "salmon", height: "100vh" }}>
+    <Grid sx={{ background:"url(./img/bgpic.png)",height: "100vh" , width:"100%"}}>
       <DrawerAppBar />
-      <img src="/img/bgpic.png" width="100%" height="100%" alt="" />
+   
       <Hero />
     </Grid>
   );
