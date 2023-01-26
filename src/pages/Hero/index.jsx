@@ -1,10 +1,11 @@
-import { Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 
 import React from "react";
-import DrawerAppBar from "../../components/navbar";
-import Searchh from "../../components/searchh";
-import Category_component from "../../components/Category";
-import Vacation from "../../components/Vacation";
+import DrawerAppBar from "../../components/Hero/Nav";
+import Searchh from "../../components/Hero/Searchh";
+import Category_component from "../../components/Hero/Category";
+import Vacation from "../../components/Hero/Vacations";
+import Vacations from "../../components/Hero/Vacations";
 const Hero = () => {
   return (
     <Grid
@@ -14,7 +15,7 @@ const Hero = () => {
        
       }}
     >
-      <Grid sx={{ margin: "10%", display:"flex", flexDirection:"column",justifyContent:"space-between",  height:"90vh" }}>
+      <Container sx={{ display:"flex", flexDirection:"column",justifyContent:"space-between",  height:"90vh" }}>
         <Typography
           variant="h1"
           sx={{
@@ -29,9 +30,9 @@ const Hero = () => {
         </Typography>
         <Searchh />
         <Category_component />
-        <Vacation />
+        <Vacations />
        
-      </Grid>
+      </Container>
      
     </Grid>
   );

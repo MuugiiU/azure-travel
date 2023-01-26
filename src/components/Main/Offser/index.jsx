@@ -4,7 +4,7 @@ import { Grid, Button } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
-import OffserData from "../../data/Offser";
+import OffserData from "../../../data/Offser";
 const Img = styled("img")({
   margin: "auto",
   display: "block",
@@ -17,8 +17,8 @@ export default function Offser() {
       sx={{
         top: "4.6rem",
         overflow: "hidden",
-        marginTop: "-60px",
-        marginLeft: "10%",
+        marginTop: "13rem",
+      
       }}
     >
       <Typography
@@ -47,7 +47,7 @@ export default function Offser() {
         }}
       >
         {" "}
-        {OffserData.map((OffserData, index) => {
+        {OffserData.map((OffserData) => {
           return (
             <Paper
               sx={{

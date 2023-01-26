@@ -1,9 +1,9 @@
 import { Typography, Grid, Box } from "@mui/material";
 import React from "react";
-import vacationData from "../../data/vacation";
-const Vacation = () => {
+import vacationData from "../../../data/vacation";
+const Vacations = () => {
   return (
-    <Grid sx={{ width: "100%" }}>
+    <Grid sx={{ width: "100%", marginTop:"2rem"}}>
       <Typography variant="h3" sx={{ fontSize: "32px", color: "white" }}>
         {" "}
         Top Vacation
@@ -52,4 +52,4 @@ const Vacation = () => {
   );
 };
 
-export default Vacation;
+export default Vacations;

@@ -1,12 +1,13 @@
 import React from "react";
 
 import { Grid, imageListClasses } from "@mui/material";
-import DrawerAppBar from "../../components/navbar";
+import DrawerAppBar from "../../components/Hero/Nav";
 import Hero from "../Hero";
 import Main from "../Main";
 import Modal from "@mui/material/Modal";
 import AuthPage from "../Auth";
 import { Typography, Box } from "@mui/material";
+import { Container } from "@mui/system";
 const style = {
   position: "absolute",
   top: "calc(50% - 280px)",
@@ -39,8 +40,11 @@ const Home = () => {
           style={style}
           open={open}
         />
+        <Container>
         <Hero />
         <Main />
+        </Container>
+       
       </Grid>
       <Modal
         open={open}

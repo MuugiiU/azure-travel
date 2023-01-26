@@ -1,17 +1,17 @@
-import { Grid } from "@mui/material";
+import { Grid,Container } from "@mui/material";
 import React from "react";
-import Offser from "../../components/Offser";
+import Offser from "../../components/Main/Offser";
+import Browse from "../../components/Main/Browse";
+import Plan from "../../components/Main/Plan";
 
 const Main = () => {
   return (
-    <Grid
-      sx={{
-        // margin: "10%",
-        width: "100%",
-        // height: "100%",
-      }}
-    >
+    <Grid>
+      <Container>
       <Offser />
+      <Browse/>
+      <Plan/>
+      </Container>
     </Grid>
   );
 };
