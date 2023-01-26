@@ -9,58 +9,68 @@ const Img = styled("img")({
   margin: "auto",
   display: "block",
   maxWidth: "100%",
-  maxHeight: "100%",
 });
 
 export default function Offser() {
   return (
-    <Grid sx={{ width: "100%", height: "100vh",top:"4.6rem" }}>
+    <Grid
+      sx={{
+        top: "4.6rem",
+        overflow: "hidden",
+        marginTop: "-60px",
+        marginLeft: "10%",
+      }}
+    >
       <Typography
         variant="h3"
         sx={{
           fontWeight: 700,
           fontSize: "32px",
           lineHeight: "37px",
-          left:"20%",
-          top: "150px",
-        
         }}
       >
         Offers
       </Typography>
-      <Grid sx={{ display: "flex", 
-                  gap: "15px" ,
-                  justifyContent:"space-between",  
-                  boxShadow: "0px 5.50776px 22.031px rgba(158, 158, 158, 0.25)", 
-                  overflowX: "auto",
-                  overflowY: "hidden",
-                  "&::-webkit-scrollbar": {
-                  display: "none",
-                  width:"100%",
-                  top:"1.5rem",
-                  marginLeft:"2rem"
-                
-                },
-                  borderRradius: "22.031px"}}>
+      <Grid
+        sx={{
+          display: "flex",
+          gap: "15px",
+          justifyContent: "space-between",
+          boxShadow: "0px 5.50776px 22.031px rgba(158, 158, 158, 0.25)",
+          overflowX: "auto",
+          overflowY: "hidden",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          borderRradius: "22.031px",
+          marginTop: "2rem",
+        }}
+      >
         {" "}
         {OffserData.map((OffserData, index) => {
           return (
             <Paper
               sx={{
-                height:"20%",
+                height: "20%",
                 backgroundColor: (theme) =>
                   theme.palette.mode === "dark" ? "#1A2027" : "#fff",
               }}
             >
-              <Grid sx={{ display: "flex", gap: "2rem",padding:"1rem"}}>
+              <Grid sx={{ display: "flex", gap: "2rem", padding: "1rem" }}>
                 <Grid item>
-                  <ButtonBase sx={{ width: 200, height: 150,p:"5px" }}>
+                  <ButtonBase sx={{ width: 200, height: 150, p: "5px" }}>
                     <Img alt="complex" src={OffserData.imgURL} />
                   </ButtonBase>
                 </Grid>
-                <Grid item xs={12} sm container sx={{display:"flex",justifyContent:"space-between" }}>
-                  <Grid item xs container direction="column" >
-                    <Grid item sx={{width:"18.75rem", height:"8.75rem"}}>
+                <Grid
+                  item
+                  xs={12}
+                  sm
+                  container
+                  sx={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <Grid item xs container direction="column">
+                    <Grid item sx={{ width: "18.75rem", height: "8.75rem" }}>
                       <Typography
                         gutterBottom
                         variant="p"
@@ -72,7 +82,7 @@ export default function Offser() {
                       <Typography
                         variant="h2"
                         gutterBottom
-                        sx={{ fontSize: "1.5rem",  fontWeight:"bold" }}
+                        sx={{ fontSize: "1.5rem", fontWeight: "bold" }}
                       >
                         {OffserData.about}
                       </Typography>
@@ -91,8 +101,7 @@ export default function Offser() {
                         borderRadius: "2rem",
                         width: "7.75rem",
                         height: "4rem",
-                        buttom:"0.5rem"
-                        
+                        buttom: "0.5rem",
                       }}
                     >
                       {OffserData.buttom}

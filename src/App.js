@@ -5,6 +5,8 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Login from "./pages/Auth/";
 import  Home from "./pages/Home" ;
 import Main from "./pages/Main";
+import { Category, Details } from "@mui/icons-material";
+import Categories from "./pages/Categories";
 function App() {
   return (
     <Router>
@@ -13,7 +15,8 @@ function App() {
        
         <Route path='/login' element={<Login/>}/>
         <Route path='/' element={<Home/>}/>
-        {/* <Route path="/Main" element={<Main/>}/> */}
+        <Route path="/Categories" element={<Categories/>}/>
+        <Route path="/Detials" element={<Details/>}/>
         </Routes>
     </Router>
   );

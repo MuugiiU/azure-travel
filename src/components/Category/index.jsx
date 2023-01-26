@@ -1,9 +1,10 @@
 import { Typography, Grid, Box } from "@mui/material";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Categories from "../../data/Categories";
 const Category_component = () => {
   return (
-    <Grid sx={{ marginTop: "2rem" }}>
+    <Grid sx={{ marginTop: "3rem" }}>
       <Typography variant="h3" sx={{ color: "white", fontSize: "32px" }}>
         {" "}
         Top categories
@@ -11,7 +12,7 @@ const Category_component = () => {
       <Grid sx={{ display: "flex", gap: "40px" }}>
         {Categories.map((category, index) => {
           return (
-            <Box sx={{ marginTop: "2rem" }}>
+            <NavLink to={"/Categories"} style={{ marginTop: "2rem" }}>
               <img src={category.imgURL} alt="" />
               <Typography
                 variant="h2"
@@ -19,7 +20,7 @@ const Category_component = () => {
               >
                 {category.title}
               </Typography>
-            </Box>
+            </NavLink>
           );
         })}
       </Grid>
