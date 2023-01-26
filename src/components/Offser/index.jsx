@@ -14,61 +14,72 @@ const Img = styled("img")({
 
 export default function Offser() {
   return (
-    <Grid sx={{ position: "relative", width: "100%", height: "100vh" }}>
+    <Grid sx={{ width: "100%", height: "100vh",top:"4.6rem" }}>
       <Typography
         variant="h3"
         sx={{
           fontWeight: 700,
           fontSize: "32px",
           lineHeight: "37px",
-          position: "absolute",
-          top: "80px",
+          left:"20%",
+          top: "150px",
+        
         }}
       >
         Offers
       </Typography>
-      <Grid sx={{ display: "flex", gap: "5px" }}>
+      <Grid sx={{ display: "flex", 
+                  gap: "15px" ,
+                  justifyContent:"space-between",  
+                  boxShadow: "0px 5.50776px 22.031px rgba(158, 158, 158, 0.25)", 
+                  overflowX: "auto",
+                  overflowY: "hidden",
+                  "&::-webkit-scrollbar": {
+                  display: "none",
+                  width:"100%",
+                  top:"1.5rem",
+                  marginLeft:"2rem"
+                
+                },
+                  borderRradius: "22.031px"}}>
         {" "}
         {OffserData.map((OffserData, index) => {
           return (
             <Paper
               sx={{
-                p: 2,
-                margin: "auto",
-                maxWidth: 650,
-                flexGrow: 1,
+                height:"20%",
                 backgroundColor: (theme) =>
                   theme.palette.mode === "dark" ? "#1A2027" : "#fff",
               }}
             >
-              <Grid container spacing={2} sx={{ display: "flex", gap: "10px" }}>
+              <Grid sx={{ display: "flex", gap: "2rem",padding:"1rem"}}>
                 <Grid item>
-                  <ButtonBase sx={{ width: 300, height: 200 }}>
+                  <ButtonBase sx={{ width: 200, height: 150,p:"5px" }}>
                     <Img alt="complex" src={OffserData.imgURL} />
                   </ButtonBase>
                 </Grid>
-                <Grid item xs={12} sm container>
-                  <Grid item xs container direction="column" spacing={2}>
-                    <Grid item xs>
+                <Grid item xs={12} sm container sx={{display:"flex",justifyContent:"space-between" }}>
+                  <Grid item xs container direction="column" >
+                    <Grid item sx={{width:"18.75rem", height:"8.75rem"}}>
                       <Typography
                         gutterBottom
                         variant="p"
                         component="div"
-                        sx={{ fontSize: "16px" }}
+                        sx={{ fontSize: "1rem" }}
                       >
                         {OffserData.title}
                       </Typography>
                       <Typography
                         variant="h2"
                         gutterBottom
-                        sx={{ fontSize: "24px", fontStyle: "Bold" }}
+                        sx={{ fontSize: "1.5rem",  fontWeight:"bold" }}
                       >
                         {OffserData.about}
                       </Typography>
                       <Typography
                         variant="h3"
                         color="text.secondary"
-                        sx={{ fontSize: "16px" }}
+                        sx={{ fontSize: "1rem" }}
                       >
                         {OffserData.p}
                       </Typography>
@@ -77,10 +88,11 @@ export default function Offser() {
                       variant="contained"
                       size="medium"
                       sx={{
-                        borderRadius: "32px",
-                        width: "140px",
-                        height: "52px",
-                        margin: "10px",
+                        borderRadius: "2rem",
+                        width: "7.75rem",
+                        height: "4rem",
+                        buttom:"0.5rem"
+                        
                       }}
                     >
                       {OffserData.buttom}

@@ -11,18 +11,17 @@ const Hero = () => {
       sx={{
         width: "100%",
         height: "100%",
-        position: "relative",
-        bottom: "40px",
+       
       }}
     >
-      <Grid sx={{ margin: "10%" }}>
+      <Grid sx={{ margin: "10%", display:"flex", flexDirection:"column",justifyContent:"space-between",  height:"90vh" }}>
         <Typography
           variant="h1"
           sx={{
             color: "white",
             fontSize: "72px",
             lineHeight: "83px",
-            top: "15%",
+         
           }}
         >
           The whole world <br />
@@ -30,11 +29,10 @@ const Hero = () => {
         </Typography>
         <Searchh />
         <Category_component />
-      </Grid>
-      <Grid sx={{ marginLeft: "10%" }}>
-        {" "}
         <Vacation />
+       
       </Grid>
+     
     </Grid>
   );
 };

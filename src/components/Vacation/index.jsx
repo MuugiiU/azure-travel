@@ -1,11 +1,9 @@
 import { Typography, Grid, Box } from "@mui/material";
 import React from "react";
-
-import { SwipeableDrawer } from "@mui/material";
 import vacationData from "../../data/vacation";
 const Vacation = () => {
   return (
-    <Grid sx={{ marginTop: "10%" }}>
+    <Grid >
       <Typography variant="h3" sx={{ fontSize: "32px", color: "white" }}>
         {" "}
         Top Vacation
@@ -13,11 +11,12 @@ const Vacation = () => {
 
       <Grid
         sx={{
-          position: "relative",
+       
           overflowX: "auto",
           overflowY: "hidden",
           "&::-webkit-scrollbar": {
             display: "none",
+          
           },
         }}
       >
@@ -33,7 +32,7 @@ const Vacation = () => {
               sx={{
                 width: "300px",
                 height: "200px",
-                marginTop: "20px",
+                marginTop: "1.5rem",
               }}
             >
               <img src={vacationData.img} alt="" />
@@ -42,8 +41,6 @@ const Vacation = () => {
                 sx={{
                   color: "white",
                   fontSize: "24px",
-                  position: " absolute",
-                  top: "160px",
                   padding: "10px",
                 }}
               >

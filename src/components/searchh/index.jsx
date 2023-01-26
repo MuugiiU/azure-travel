@@ -14,10 +14,10 @@ export default function Searchh() {
   return (
     <Grid
       sx={{
-        position: "absolute",
-        width: "80%",
+        height:"10vh",
+        width: "100%",
         justifyContent: "center",
-        marginTop: "40px",
+        marginTop:"2rem"
       }}
     >
       <Paper
