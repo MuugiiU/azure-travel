@@ -18,7 +18,6 @@ export default function Offser() {
         top: "4.6rem",
         overflow: "hidden",
         marginTop: "13rem",
-      
       }}
     >
       <Typography

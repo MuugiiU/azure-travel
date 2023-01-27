@@ -117,9 +117,16 @@ const Ads = () => {
                   order: "1",
                   marginTop: "1rem",
                   width: "100%",
+                  outline: "none",
                 }}
               >
-                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    outline: "none",
+                  }}
+                >
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -157,6 +164,7 @@ const Ads = () => {
             <Box
               sx={{
                 marginTop: "5.8rem",
+                marginLeft: "1rem",
               }}
             >
               <Typography variant="h4">or</Typography>
@@ -167,6 +175,7 @@ const Ads = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: "2rem",
+                marginLeft: "1rem",
               }}
             >
               <Box>
