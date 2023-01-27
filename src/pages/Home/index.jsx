@@ -8,6 +8,8 @@ import Modal from "@mui/material/Modal";
 import AuthPage from "../Auth";
 import { Typography, Box } from "@mui/material";
 import { Container } from "@mui/system";
+import Reclam from "../Reclam";
+import { AirlineSeatReclineNormal } from "@mui/icons-material";
 const style = {
   position: "absolute",
   top: "calc(50% - 280px)",
@@ -43,8 +45,9 @@ const Home = () => {
         <Container>
         <Hero />
         <Main />
+
         </Container>
-       
+         <Reclam/>
       </Grid>
       <Modal
         open={open}

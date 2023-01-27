@@ -3,6 +3,8 @@ import React from "react";
 import Offser from "../../components/Main/Offser";
 import Browse from "../../components/Main/Browse";
 import Plan from "../../components/Main/Plan";
+import Connect from "../../components/Main/Connect";
+
 
 const Main = () => {
   return (
@@ -11,7 +13,11 @@ const Main = () => {
       <Offser />
       <Browse/>
       <Plan/>
+     
       </Container>
+      <Connect/>
+    
+    
     </Grid>
   );
 };
