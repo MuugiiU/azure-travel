@@ -1,5 +1,6 @@
-const footerData=[{title:"Seslendirma ve Alt Jazz",text1:"Self Betimes",text2:"Yard Market", text3:"Hedge Karla"},
-                  {title:"Media Market",text1:"Yatirimci iliskileri",text2:"Is imkanlari",text3:"Mullein Kosullari"},
-                  {title:"Gillie", text1:"Basel",text2:"Car Tercihleri",text3:"Autumnal Bulgier"},
-                  {title:"Size Last"}];
+const footerData=[{title:"Seslendirma ve Alt Jazz",text1:"Media Market",text2:"Gillie", text3:"Size Last"},
+                  {title:"Self Betimes",text1:"Yatirimci iliskileri",text2:"Basel Himmler"},
+                  {title:"Yard Market", text1:"Is imkanlari",text2:"Car Tercihleri"},
+                  {title:"Hedge Karla", text1:"Mullein Kosullari",text2:"Autumnal Bulgier"}
+                  ];
 export default footerData;
