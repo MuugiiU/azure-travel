@@ -18,8 +18,8 @@ const Browse = () => {
           marginTop: "40px",
         }}
       >
-        {BrowData.map((item) => (
-          <Box sx={{ position: "relative" }}>
+        {BrowData.map((item, index) => (
+          <Box sx={{ position: "relative" }} key={index}>
             <img src={item.imgURL} width="310" height="200" />
             <Typography
               variant="h4"

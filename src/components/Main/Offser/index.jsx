@@ -46,9 +46,10 @@ export default function Offser() {
         }}
       >
         {" "}
-        {OffserData.map((OffserData) => {
+        {OffserData.map((OffserData, index) => {
           return (
             <Paper
+              key={index}
               sx={{
                 height: "20%",
                 backgroundColor: (theme) =>

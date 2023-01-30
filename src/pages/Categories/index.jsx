@@ -6,7 +6,7 @@ import datas from "../../data/datas";
 const Categories = () => {
   const { id } = useParams();
   console.log(id);
-  const filteredData = datas.filter((data) => data.category == id);
+  const filteredData = datas.filter((data) => data.category === id);
 
   return (
     <Grid sx={{ width: "100%", height: "100vh" }}>

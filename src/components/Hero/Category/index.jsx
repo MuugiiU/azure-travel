@@ -4,10 +4,6 @@ import { NavLink } from "react-router-dom";
 import Categories from "../../../data/Categories";
 import datas from "../../../data/datas";
 const Category_component = () => {
-  // const filterData = (category) => {
-  //   const filtered = datas.filter((data) => data.category == category);
-  //   console.log(filtered);
-  // };
   return (
     <Grid sx={{ marginTop: "3rem" }}>
       <Typography variant="h3" sx={{ color: "white", fontSize: "32px" }}>
@@ -15,9 +11,10 @@ const Category_component = () => {
         Top categories
       </Typography>
       <Grid sx={{ display: "flex", gap: "40px" }}>
-        {Categories.map((category) => {
+        {Categories.map((category, index) => {
           return (
             <NavLink
+              key={index}
               to={"/Categories/" + category.title}
               // onClick={() => filterData(category.title)}
               style={{ marginTop: "2rem", textDecoration: "none" }}

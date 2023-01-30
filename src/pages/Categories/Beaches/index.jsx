@@ -11,24 +11,23 @@ import { Link } from "react-router-dom";
 const Beach = (filteredData) => {
   return (
     <Grid sx={{ display: "flex", gap: "1rem", margin: "10%" }}>
-      {" "}
       {filteredData.map((filterData, index) => (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card key={index} sx={{ maxWidth: 345 }}>
           <CardMedia
             sx={{ height: 140, width: 400 }}
-            image={BeachData.imgUTL}
+            image={filteredData.imgUTL}
             title="green iguana"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {BeachData.title}
+              {filteredData.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {BeachData.bairsgil}
+              {filteredData.bairsgil}
             </Typography>
           </CardContent>
           <CardActions>
-            <Link href={"/Detials"}>{BeachData.tovch}</Link>
+            <Link href={"/Detials"}>{filteredData.tovch}</Link>
           </CardActions>
         </Card>
       ))}
