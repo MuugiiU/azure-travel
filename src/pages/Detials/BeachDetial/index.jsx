@@ -1,11 +1,11 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import BeachHouse from "./BeachHouse";
+import DetialCards from "./DetialCards";
 
 const BeachDetial = () => {
   return (
     <Grid>
-      <BeachHouse />
+      <DetialCards />
     </Grid>
   );
 };

@@ -8,11 +8,11 @@ import Typography from "@mui/material/Typography";
 import BeachData from "../../../data/Catalog/Beach";
 import { Link } from "react-router-dom";
 
-const Beach = () => {
+const Beach = (filteredData) => {
   return (
     <Grid sx={{ display: "flex", gap: "1rem", margin: "10%" }}>
       {" "}
-      {BeachData.map((BeachData, index) => (
+      {filteredData.map((filterData, index) => (
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
             sx={{ height: 140, width: 400 }}
