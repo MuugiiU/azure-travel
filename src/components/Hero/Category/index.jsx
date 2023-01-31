@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Categories from "../../../data/Categories";
 import datas from "../../../data/datas";
-const Category_component = () => {
+const Category_component = (filterData) => {
   return (
     <Grid sx={{ marginTop: "3rem" }}>
       <Typography variant="h3" sx={{ color: "white", fontSize: "32px" }}>
@@ -16,7 +16,6 @@ const Category_component = () => {
             <NavLink
               key={index}
               to={"/Categories/" + category.title}
-              // onClick={() => filterData(category.title)}
               style={{ marginTop: "2rem", textDecoration: "none" }}
             >
               <img src={category.imgURL} alt="" />

@@ -29,7 +29,7 @@ const Beach = ({ filteredData }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Link href={"/Detials"}>{filterData.tovch}</Link>
+            <Link to={"/Detials/" + filterData.id}>{filterData.tovch}</Link>
           </CardActions>
         </Card>
       ))}
