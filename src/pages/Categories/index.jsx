@@ -9,7 +9,7 @@ const Categories = () => {
   const filteredData = datas.filter((data) => data.category === id);
 
   return (
-    <Grid sx={{ width: "100%", height: "100vh" }}>
+    <Grid sx={{ width: "100%", height: "60vh" }}>
       <Beaches filteredData={filteredData} />
     </Grid>
   );

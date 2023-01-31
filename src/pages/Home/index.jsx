@@ -43,11 +43,10 @@ const Home = () => {
           open={open}
         />
         <Container>
-        <Hero />
-        <Main />
-
+          <Hero />
+          <Main />
         </Container>
-         <Reclam/>
+        <Reclam />
       </Grid>
       <Modal
         open={open}

@@ -8,17 +8,18 @@ import Main from "./pages/Main";
 import { Category } from "@mui/icons-material";
 import BeachDetial from "./pages/Detials/BeachDetial";
 import Categories from "./pages/Categories";
+
 function App() {
   return (
     <Router>
        <CssBaseline/>
       <Routes>
-       
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/' element={<Home/>}/>
-        <Route path="/Categories/:id" element={<Categories/>}/>
-        <Route path="/Detials/:id" element={<BeachDetial/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route path="/Categories/:id" element={<Categories/>}/>
+          <Route path="/Detials/:id" element={<BeachDetial/>}/>
         </Routes>
+       
     </Router>
   );
 }
