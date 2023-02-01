@@ -94,7 +94,7 @@ function DrawerAppBar(props) {
               </Button>
             ))}
             <Button onClick={props.handleOpen} sx={{ color: "white" }}>
-              Sign Up
+              Sign In
             </Button>
           </Box>
         </Toolbar>
