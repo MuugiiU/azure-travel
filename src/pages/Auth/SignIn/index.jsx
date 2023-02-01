@@ -48,7 +48,12 @@ const Signin = (props) => {
     //     password: data.get('password'),
     //   });
   };
+const handleClick=()=>{
+  if(email ===""|| password===""){
+    setMessage
+  }
 
+}
   {
     return (
       <Container component="main" maxWidth="xs">
@@ -94,7 +99,9 @@ const Signin = (props) => {
               label="Намайг сана"
             />
             <Button
-              onClick={login}
+              onClick={
+
+              }
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}

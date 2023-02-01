@@ -5,11 +5,21 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Login from "./pages/Auth/";
 import  Home from "./pages/Home" ;
 import Main from "./pages/Main";
-import { Category } from "@mui/icons-material";
+import { Category, Email } from "@mui/icons-material";
 import BeachDetial from "./pages/Detials/BeachDetial";
 import Categories from "./pages/Categories";
-
+import {useState} from "react-router-dom";
 function App() {
+  const [user,setUser] =useState(null);
+   const login=(email, password)=>{ 
+    console.log("Login",email);
+    console.log("Login",password)
+   try{ const res= axios.post("http://locolhost:8009/signin",{email,password})}
+   console.log("Success",res);
+   setUser();
+   }
+   catch(error)
+   const logout=()=>{};
   return (
     <Router>
        <CssBaseline/>
