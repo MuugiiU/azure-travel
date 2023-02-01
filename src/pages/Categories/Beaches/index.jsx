@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Rating } from "@mui/material";
 import Typography from "@mui/material/Typography";
 // import BeachData from "../../../data/Catalog/Beach";
 import { Link } from "react-router-dom";
@@ -24,9 +24,17 @@ const Beach = ({ filteredData }) => {
               {filterData.title}
             </Typography>
 
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ color: "blue", fontWeight: "bold" }}
+            >
               {filterData.bairsgil}
             </Typography>
+            <Typography variant="body1" color="text.secondary">
+              {filterData.viewer}
+            </Typography>
+            <Rating value={filterData.rating} />
           </CardContent>
           <CardActions>
             <Link to={"/Detials/" + filterData.id}>{filterData.tovch}</Link>

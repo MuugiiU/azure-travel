@@ -196,9 +196,9 @@ const DetialCards = ({ Finddata }) => {
                   width: "20px",
                 }}
               >
-                4.3/5
+                {Finddata.rating}
               </Button>
-              <Typography>382 reviews</Typography>
+              <Typography>{Finddata.viewer}</Typography>
             </Box>
             <Box>
               <Typography>382 Great service</Typography>
