@@ -1,15 +1,16 @@
 import React from "react";
 
 import { Grid, imageListClasses } from "@mui/material";
-import DrawerAppBar from "../../components/Hero/Nav";
+import Navbar from "../../components/Hero/Nav";
 import Hero from "../Hero";
 import Main from "../Main";
 import Modal from "@mui/material/Modal";
-import AuthPage from "../Auth";
+import Login from "../Login";
 import { Typography, Box } from "@mui/material";
 import { Container } from "@mui/system";
 import Reclam from "../Reclam";
 import { AirlineSeatReclineNormal } from "@mui/icons-material";
+
 const style = {
   position: "absolute",
   top: "calc(50% - 280px)",
@@ -36,7 +37,7 @@ const Home = () => {
           width: "100%",
         }}
       >
-        <DrawerAppBar
+        <Navbar
           handleOpen={handleOpen}
           handleClose={handleClose}
           style={style}
@@ -56,7 +57,7 @@ const Home = () => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-description">
-            <AuthPage />
+            <Login handleClose={handleClose} login={login} />
           </Typography>
         </Box>
       </Modal>

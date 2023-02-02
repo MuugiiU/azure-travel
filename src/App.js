@@ -1,28 +1,50 @@
 import "./App.css";
-import { CssBaseline } from "@mui/material";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-// import Navbar from "./components/Navbar";
-import Login from "./pages/Auth/";
+import React from "react";
+import { useState } from "react";
+import { Route, Routes} from "react-router-dom";
+import axios from 'axios';
+import Navbar from "./components/Hero/Nav";
+import Login from "./pages/Login";
 import  Home from "./pages/Home" ;
 import Main from "./pages/Main";
 import { Category, Email } from "@mui/icons-material";
 import BeachDetial from "./pages/Detials/BeachDetial";
 import Categories from "./pages/Categories";
-import {useState} from "react-router-dom";
+
 function App() {
-  const [user,setUser] =useState(null);
-   const login=(email, password)=>{ 
-    console.log("Login",email);
-    console.log("Login",password)
-   try{ const res= axios.post("http://locolhost:8009/signin",{email,password})}
-   console.log("Success",res);
-   setUser();
+  const [user,setUser] =useState(localStorage.getItem("user"));
+  const [open,setOpen] =useState(false);
+  const handleOPen =() => setOpen(true);
+  const handleClose =() => setOpen (false);
+
+   const login = async (email, password) => { 
+  
+   try{ const res= axios.post("http://locolhost:8009/signin",{email,password})
+    console.log("Success",res.data.user);
+    localStorage.setItem("user".JSON.stringify(res.data.user));
+    setUser(res.data.user);
+    handleClose();
+    }
+    catch(error) {
+      console.log("ERROR",error);
+    }
+  }
+  
+   const logout=()=>{
+    localStorage.removeItem("user");
+    setUser(null);
    }
-   catch(error)
-   const logout=()=>{};
+
   return (
-    <Router>
-       <CssBaseline/>
+    <>
+    <Navbar 
+    login ={login}
+    logout={logout}
+    user={user}
+    open={open}
+    handleClose={handleClose}
+    handleOPen={handleOPen}/>
+   
       <Routes>
           <Route path='/login' element={<Login/>}/>
           <Route path='/' element={<Home/>}/>
@@ -30,7 +52,8 @@ function App() {
           <Route path="/Detials/:id" element={<BeachDetial/>}/>
         </Routes>
        
-    </Router>
+  
+    </>
   );
 }
 

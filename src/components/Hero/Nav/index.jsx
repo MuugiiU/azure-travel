@@ -15,11 +15,20 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { navItems } from "../../../data/navItems";
+import { useState } from "react";
+import Modal from "@mui/material/Modal";
 
 const drawerWidth = 240;
 
-function DrawerAppBar(props) {
-  const { window } = props;
+function Navbar({
+  window,
+  login,
+  logout,
+  user,
+  open,
+  handleClose,
+  handleOpen,
+}) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -93,9 +102,31 @@ function DrawerAppBar(props) {
                 {item}
               </Button>
             ))}
-            <Button onClick={props.handleOpen} sx={{ color: "white" }}>
-              Sign In
-            </Button>
+            {user ? (
+              <Button
+                onClick={() => {
+                  logout();
+                }}
+                sx={{ color: "white" }}
+              >
+                Sign Out
+              </Button>
+            ) : (
+              <Button
+                onClick={handleOpen}
+                sx={{
+                  padding: "0",
+                  fontWeight: "700",
+                  fontSize: "16px",
+                  color: "#fff",
+                  textTransform: "none",
+                  marginLeft: "2vw",
+                  opacity: "0.8",
+                }}
+              >
+                Sign In
+              </Button>
+            )}
           </Box>
         </Toolbar>
       </AppBar>
@@ -121,16 +152,11 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
+      <Modal open={open} onClose={handleClose}>
+        <Login handleClose={handleClose} login={login} />
+      </Modal>
     </Box>
   );
 }
 
-DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
-
-export default DrawerAppBar;
+export default Navbar;
