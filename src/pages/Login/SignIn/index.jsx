@@ -12,11 +12,13 @@ import { Typography, Snackbar, Alert } from "@mui/material";
 import Container from "@mui/material/Container";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Signin = ({ login, setSignIn }) => {
+import axios from "axios";
+
+const Signin = ({ setIsSignIn, setUser, handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
+  const [status, setStatus] = useState("error");
   const [isAlert, setIsAlert] = useState(false);
   const navigate = useNavigate();
   const changeEmail = (e) => {
@@ -33,8 +35,28 @@ const Signin = ({ login, setSignIn }) => {
     }
     login(email, password);
   };
+  const login = async (email, password) => {
+    try {
+      const res = await axios.post("http://localhost:8010/signin", {
+        email,
+        password,
+      });
+      console.log("Success", res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      setStatus("success");
+      setMessage(res.data.message);
+      setIsAlert(true);
+      setUser(res.data.user);
+      handleClose();
+    } catch (error) {
+      console.log("ERROR: ", error);
+      setStatus("error");
+      setMessage(error.response.data.message);
+      setIsAlert(true);
+    }
+  };
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{ bgcolor: "white" }}>
       <Box
         sx={{
           marginTop: 8,
@@ -94,7 +116,8 @@ const Signin = ({ login, setSignIn }) => {
               <Button
                 variant="text"
                 onClick={() => {
-                  setSignIn(false);
+                  console.log("jj");
+                  setIsSignIn();
                 }}
               >
                 Бүртгүүлэх
@@ -111,7 +134,7 @@ const Signin = ({ login, setSignIn }) => {
         autoHideDuration={3000}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
-        <Alert severity="success" sx={{ width: "100%" }}>
+        <Alert severity={status} sx={{ width: "100%" }}>
           {message}
         </Alert>
       </Snackbar>

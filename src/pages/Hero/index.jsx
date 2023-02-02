@@ -12,17 +12,23 @@ const Hero = () => {
       sx={{
         width: "100%",
         height: "100%",
-       
       }}
     >
-      <Container sx={{ display:"flex", flexDirection:"column",justifyContent:"space-between",  height:"90vh" }}>
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: "90vh",
+        }}
+      >
         <Typography
           variant="h1"
           sx={{
             color: "white",
             fontSize: "72px",
             lineHeight: "83px",
-         
+            marginTop: "3rem",
           }}
         >
           The whole world <br />
@@ -31,9 +37,7 @@ const Hero = () => {
         <Searchh />
         <Category_component />
         <Vacations />
-       
       </Container>
-     
     </Grid>
   );
 };

@@ -4,8 +4,6 @@ import { Grid, imageListClasses } from "@mui/material";
 import Navbar from "../../components/Hero/Nav";
 import Hero from "../Hero";
 import Main from "../Main";
-import Modal from "@mui/material/Modal";
-import Login from "../Login";
 import { Typography, Box } from "@mui/material";
 import { Container } from "@mui/system";
 import Reclam from "../Reclam";
@@ -37,30 +35,18 @@ const Home = () => {
           width: "100%",
         }}
       >
-        <Navbar
+        {/* <Navbar
           handleOpen={handleOpen}
           handleClose={handleClose}
           style={style}
           open={open}
-        />
+        /> */}
         <Container>
           <Hero />
           <Main />
         </Container>
         <Reclam />
       </Grid>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-description">
-            <Login handleClose={handleClose} login={login} />
-          </Typography>
-        </Box>
-      </Modal>
     </>
   );
 };

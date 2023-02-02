@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,16 +15,16 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { navItems } from "../../../data/navItems";
-import { useState } from "react";
 import Modal from "@mui/material/Modal";
+import Login from "../../../pages/Login";
 
 const drawerWidth = 240;
 
 function Navbar({
   window,
-  login,
   logout,
   user,
+  setUser,
   open,
   handleClose,
   handleOpen,
@@ -153,7 +153,7 @@ function Navbar({
         </Drawer>
       </Box>
       <Modal open={open} onClose={handleClose}>
-        <Login handleClose={handleClose} login={login} />
+        <Login handleClose={handleClose} setUser={setUser} />
       </Modal>
     </Box>
   );

@@ -37,7 +37,7 @@ const Signup = (props) => {
   };
 
   const signup = async () => {
-    console.log(!email);
+    console.log("WW");
     if (!email || !name || !password || !rePassword) {
       setMessage("Мэдээллийг бүрэн бөглөнө үү!!!");
       setIsAlert(true);
@@ -49,7 +49,7 @@ const Signup = (props) => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:8009/signup", {
+      const res = await axios.post("http://localhost:8010/signup", {
         name,
         email,
         password,
@@ -65,7 +65,7 @@ const Signup = (props) => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{ bgcolor: "white" }}>
       <Snackbar
         open={isAlert}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -90,13 +90,13 @@ const Signup = (props) => {
         <Typography component="h1" variant="h5">
           Бүртгүүлэх
         </Typography>
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Username"
+            id="text"
+            label="Хэрэглэгчийн нэр"
             name="email"
             autoComplete="email"
             autoFocus
@@ -141,13 +141,12 @@ const Signup = (props) => {
             label="Намайг сана"
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
-            onChange={signup}
+            onClick={signup}
           >
-            Бүртгүүлэх
+            Бүртгүүлэх-9
           </Button>
           <Grid container>
             <Grid item xs>
@@ -159,7 +158,7 @@ const Signup = (props) => {
               <Button
                 variant="text"
                 onClick={() => {
-                  props.setSignIn(true);
+                  props.setIsSignIn();
                 }}
               >
                 Нэвтрэх

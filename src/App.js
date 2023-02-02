@@ -1,6 +1,5 @@
 import "./App.css";
-import React from "react";
-import { useState } from "react";
+import React,{ useState } from "react";
 import { Route, Routes} from "react-router-dom";
 import axios from 'axios';
 import Navbar from "./components/Hero/Nav";
@@ -14,21 +13,12 @@ import Categories from "./pages/Categories";
 function App() {
   const [user,setUser] =useState(localStorage.getItem("user"));
   const [open,setOpen] =useState(false);
-  const handleOPen =() => setOpen(true);
+  const handleOpen =() =>{
+     setOpen(true);
+    console.log("modal")}
   const handleClose =() => setOpen (false);
 
-   const login = async (email, password) => { 
-  
-   try{ const res= axios.post("http://locolhost:8009/signin",{email,password})
-    console.log("Success",res.data.user);
-    localStorage.setItem("user".JSON.stringify(res.data.user));
-    setUser(res.data.user);
-    handleClose();
-    }
-    catch(error) {
-      console.log("ERROR",error);
-    }
-  }
+   
   
    const logout=()=>{
     localStorage.removeItem("user");
@@ -38,12 +28,12 @@ function App() {
   return (
     <>
     <Navbar 
-    login ={login}
     logout={logout}
     user={user}
+    setUser={setUser}
     open={open}
     handleClose={handleClose}
-    handleOPen={handleOPen}/>
+    handleOpen={handleOpen}/>
    
       <Routes>
           <Route path='/login' element={<Login/>}/>
