@@ -9,6 +9,7 @@ import Main from "./pages/Main";
 import { Category, Email } from "@mui/icons-material";
 import BeachDetial from "./pages/Detials/BeachDetial";
 import Categories from "./pages/Categories";
+import Admin from "./pages/Admin"
 
 function App() {
   const [user,setUser] =useState(localStorage.getItem("user"));
@@ -40,6 +41,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path="/Categories/:id" element={<Categories/>}/>
           <Route path="/Detials/:id" element={<BeachDetial/>}/>
+          <Route path="/Admin" element={<Admin/>}/>
         </Routes>
        
   

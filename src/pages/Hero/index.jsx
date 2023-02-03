@@ -3,7 +3,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import DrawerAppBar from "../../components/Hero/Nav";
 import Searchh from "../../components/Hero/Searchh";
-import Category_component from "../../components/Hero/Category";
+import Category from "../../components/Hero/Category";
 import Vacation from "../../components/Hero/Vacations";
 import Vacations from "../../components/Hero/Vacations";
 const Hero = () => {
@@ -35,7 +35,7 @@ const Hero = () => {
           awaits.
         </Typography>
         <Searchh />
-        <Category_component />
+        <Category />
         <Vacations />
       </Container>
     </Grid>

@@ -1,9 +1,24 @@
 import { Typography, Grid, Box } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Categories from "../../../data/Categories";
-import datas from "../../../data/datas";
-const Category_component = (filterData) => {
+
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+const Category = (filterData) => {
+  const [categories, setCategories] = useState([]);
+  const GetCategories = async () => {
+    try {
+      const res = await axios.get("http://localhost:8010/categories");
+      setCategories(res.data.categories);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    GetCategories();
+  }, []);
+
   return (
     <Grid sx={{ marginTop: "3rem" }}>
       <Typography variant="h3" sx={{ color: "white", fontSize: "32px" }}>
@@ -11,7 +26,7 @@ const Category_component = (filterData) => {
         Top categories
       </Typography>
       <Grid sx={{ display: "flex", gap: "40px" }}>
-        {Categories.map((category, index) => {
+        {categories.map((category, index) => {
           return (
             <NavLink
               key={index}
@@ -33,4 +48,4 @@ const Category_component = (filterData) => {
   );
 };
 
-export default Category_component;
+export default Category;
