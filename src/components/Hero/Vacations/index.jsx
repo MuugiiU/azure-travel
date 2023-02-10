@@ -3,13 +3,15 @@ import React from "react";
 import vacationData from "../../../data/vacation";
 const Vacations = () => {
   return (
-    <Grid sx={{ width: "100%", marginTop: "2rem" }}>
+    <Grid xs={12} sm={6} md={3} sx={{ width: "100%", marginTop: "2rem" }}>
       <Typography variant="h3" sx={{ fontSize: "32px", color: "white" }}>
         {" "}
         Top Vacation
       </Typography>
 
       <Grid
+        sm={12}
+        md={8}
         sx={{
           overflowX: "auto",
           overflowY: "hidden",
@@ -36,6 +38,9 @@ const Vacations = () => {
             >
               <img src={vacationData.img} alt="" />
               <Typography
+                xs={12}
+                sm={10}
+                md={6}
                 variant="h3"
                 sx={{
                   color: "white",

@@ -20,12 +20,12 @@ const Category = (filterData) => {
   }, []);
 
   return (
-    <Grid sx={{ marginTop: "3rem" }}>
+    <Grid xs={12} sm={10} md={6} sx={{ marginTop: "3rem" }}>
       <Typography variant="h3" sx={{ color: "white", fontSize: "32px" }}>
         {" "}
         Top categories
       </Typography>
-      <Grid sx={{ display: "flex", gap: "40px" }}>
+      <Grid xs="12" sm="8" md="6" sx={{ display: "flex", gap: "40px" }}>
         {categories.map((category, index) => {
           return (
             <NavLink

@@ -9,6 +9,8 @@ import Vacations from "../../components/Hero/Vacations";
 const Hero = () => {
   return (
     <Grid
+      sm={12}
+      md={6}
       sx={{
         width: "100%",
         height: "100%",

@@ -14,13 +14,14 @@ export default function Searchh() {
   return (
     <Grid
       sx={{
-        height:"10vh",
+        height: "10vh",
         width: "100%",
         justifyContent: "center",
-        marginTop:"2rem"
+        marginTop: "2rem",
       }}
     >
       <Paper
+        xs={12}
         sx={{
           p: "2px 4px",
           display: "flex",
@@ -33,35 +34,55 @@ export default function Searchh() {
           order: "1",
         }}
       >
-        <Box sx={{ ml: 1, width: "40%" }}>
-          <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-            <SearchIcon />
-          </IconButton>
-          <InputBase
-            sx={{ ml: 1, width: "60%" }}
-            placeholder="Search destinations, hotels"
-            inputProps={{ "aria-label": "search google maps" }}
-          />
-        </Box>
-        <Button variant="text" sx={{ opacity: "0.7", color: "gray" }}>
-          {" "}
-          <CalendarTodayIcon /> Check in
-        </Button>
-        <Button variant="text" sx={{ color: "gray", opacity: "0.7" }}>
-          <CalendarTodayIcon />
-          Check out
-        </Button>
-        <Box sx={{ display: "flex" }}>
-          <PermIdentityIcon sx={{ color: "gray" }} />
-          <Typography sx={{ color: "gray" }}>1 room, 2 adults</Typography>
-        </Box>
-        <Button
-          variant="contained"
-          disabled
-          sx={{ borderRadius: "32px", color: "white", opacity: "0.7" }}
-        >
-          Search
-        </Button>
+        <Grid sm={12} md={6}>
+          <Box sx={{ ml: 1, width: "40%" }}>
+            <IconButton
+              sm={12}
+              md={8}
+              type="button"
+              sx={{ p: "10px" }}
+              aria-label="search"
+            >
+              <SearchIcon />
+            </IconButton>
+            <InputBase
+              sm={12}
+              md={6}
+              sx={{ ml: 1, width: "60%" }}
+              placeholder="Search destinations, hotels"
+              inputProps={{ "aria-label": "search google maps" }}
+            />
+          </Box>
+        </Grid>
+        <Grid sm={12} md={6}>
+          <Button variant="text" sx={{ opacity: "0.7", color: "gray" }}>
+            {" "}
+            <CalendarTodayIcon /> Check in
+          </Button>
+        </Grid>
+        <Grid sm={12} md={6}>
+          <Button variant="text" sx={{ color: "gray", opacity: "0.7" }}>
+            <CalendarTodayIcon />
+            Check out
+          </Button>
+        </Grid>
+        <Grid sm={12} md={6}>
+          <Box sx={{ display: "flex" }}>
+            <PermIdentityIcon sx={{ color: "gray" }} />
+            <Typography sm={12} md={6} sx={{ color: "gray" }}>
+              1 room, 2 adults
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid sm={12} md={6}>
+          <Button
+            variant="contained"
+            disabled
+            sx={{ borderRadius: "32px", color: "white", opacity: "0.7" }}
+          >
+            Search
+          </Button>
+        </Grid>
       </Paper>
     </Grid>
   );

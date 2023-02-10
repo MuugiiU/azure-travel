@@ -28,7 +28,7 @@ function App() {
 
   return (
     <>
-    <Navbar 
+    <Navbar  sm="12" md="6"
     logout={logout}
     user={user}
     setUser={setUser}
