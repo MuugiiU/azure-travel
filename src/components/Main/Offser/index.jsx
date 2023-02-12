@@ -32,7 +32,9 @@ export default function Offser() {
       >
         Offers
       </Typography>
-      <Grid xs={12} sm={}
+      <Grid
+        xs={12}
+        sm={8}
         sx={{
           display: "flex",
           gap: "15px",
