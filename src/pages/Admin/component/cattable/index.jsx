@@ -126,7 +126,7 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
 ];
 
-export default function CollapsibleTable() {
+export default function CategoryTable() {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
