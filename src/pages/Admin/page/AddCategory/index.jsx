@@ -13,6 +13,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import { NavLink } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
+import CategoryTable from "../../component/cattable";
 
 const drawerWidth = 240;
 
@@ -49,20 +52,33 @@ const AddCategory = () => {
           <Toolbar />
           <Divider />
           <List>
-            {["Add User", "Add Category", "Add Card", ""].map((text, index) => (
+            {[
+              "Хэрэглэгчийн жагсаалт",
+              "Хэрэглэгч нэмэх",
+              "Каталоги нэмэх",
+              "Хяналтын самбар",
+            ].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
+                  {text == "Хэрэглэгчийн жагсаалт" ? (
+                    <NavLink to="/admin/userlist">
+                      <ListItemText primary={text} />
+                    </NavLink>
+                  ) : (
+                    <>
+                      <ListItemIcon>
+                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                    </>
+                  )}
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
           <Divider />
           <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
+            {["Бүх и-мэйл", "Устгах", "Спам"].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -81,7 +97,7 @@ const AddCategory = () => {
           <Toolbar />
         </Box>
       </Box>
-      <cattable />
+      <Outlet />
     </Grid>
   );
 };

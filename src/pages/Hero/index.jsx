@@ -6,7 +6,17 @@ import Searchh from "../../components/Hero/Searchh";
 import Category from "../../components/Hero/Category";
 import Vacation from "../../components/Hero/Vacations";
 import Vacations from "../../components/Hero/Vacations";
+import { useState } from "react";
+import datas from "../../data/datas";
 const Hero = () => {
+  const [cardList, setCardList] = useState(datas);
+  const handlechange = (e) => {
+    const change = datas.filter((data) =>
+      data.category.toLowerCase().includes(e.target.value)
+    );
+    setCardList(change);
+  };
+
   return (
     <Grid
       sm={12}
@@ -36,8 +46,8 @@ const Hero = () => {
           The whole world <br />
           awaits.
         </Typography>
-        <Searchh />
-        <Category />
+        <Searchh handlechange={handlechange} />
+        <Category datas={cardList} />
         <Vacations />
       </Container>
     </Grid>

@@ -10,7 +10,7 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { Button } from "@mui/material";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 
-export default function Searchh() {
+export default function Searchh({ handlechange }) {
   return (
     <Grid
       sx={{
@@ -51,6 +51,7 @@ export default function Searchh() {
               sx={{ ml: 1, width: "60%" }}
               placeholder="Search destinations, hotels"
               inputProps={{ "aria-label": "search google maps" }}
+              onClick={handlechange}
             />
           </Box>
         </Grid>

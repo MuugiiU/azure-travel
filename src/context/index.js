@@ -1,9 +1,2 @@
-import React from 'react'
-
-const index = () => {
-  return (
-    <div>index</div>
-  )
-}
-
-export default index
+import { Context, createContext } from "react";
+export const UserContext=createContext(null);
