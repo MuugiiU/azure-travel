@@ -20,7 +20,7 @@ import Login from "../../../pages/Login";
 import { useAuth } from "../../../context";
 
 const drawerWidth = 240;
-
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function Navbar({ window, logout, open, handleClose, handleOpen }) {
   const { user, setUser } = useAuth();
   const [mobileOpen, setMobileOpen] = React.useState(false);

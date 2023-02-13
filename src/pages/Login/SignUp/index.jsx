@@ -21,9 +21,9 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
-  const [isAlert, setIsAlert] = useState("");
-  const [message, setMessage] = useState("");
-  const [state, setState] = useState("error");
+  // const [isAlert, setIsAlert] = useState("");
+  // const [message, setMessage] = useState("");
+  // const [state, setState] = useState("error");
 
   const { setIsSignIn } = useContext(UserContext);
 
@@ -39,7 +39,24 @@ const Signup = (props) => {
   const changeRePassword = (e) => {
     setRePassword(e.target.value);
   };
-  const { signup } = useContext(UserContext);
+  const { signUp, isAlert, setIsAlert, setMessage, message, state } =
+    useContext(UserContext);
+
+  const handleSubmit = () => {
+    console.log("WW");
+    if (!email || !name || !password || !rePassword) {
+      setMessage("Мэдээллийг бүрэн бөглөнө үү!!!");
+      setIsAlert(true);
+      return;
+    }
+    if (password !== rePassword) {
+      setMessage("Нууц үг хоорондоо таарахгүй байна. !!!");
+      setIsAlert(true);
+      return;
+    }
+
+    signUp(name, email, password);
+  };
   return (
     <Container component="main" maxWidth="xs" sx={{ bgcolor: "white" }}>
       <Snackbar
@@ -120,7 +137,7 @@ const Signup = (props) => {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
-            onClick={signup}
+            onClick={handleSubmit}
           >
             Бүртгүүлэх-9
           </Button>

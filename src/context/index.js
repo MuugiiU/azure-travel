@@ -11,10 +11,11 @@ export const UserProvider=({children})=>{
      const [status, setStatus] = useState("error");
      const [isAlert, setIsAlert] = useState(false);
      const [isSignIn, setIsSignIn]=useState(true);
+     
      const login = async (email, password) => {
         console.log("eenn")
         try {
-          const res = await axios.post("http://localhost:8010/signin", {
+          const res = await axios.post("http://localhost:8010/users/signin", {
             email,
             password,
           });
@@ -24,7 +25,7 @@ export const UserProvider=({children})=>{
           setMessage(res.data.message);
           setIsAlert(true);
           setUser(res.data.user);
-          handleClose();
+          // handleClose();
         } catch (error) {
           console.log("ERROR: ", error);
           setStatus("error");
@@ -32,20 +33,10 @@ export const UserProvider=({children})=>{
           setIsAlert(true);
         }
       };
-    const signUp = async (name, email, password,rePassword) => {
-        console.log("WW");
-        if (!email || !name || !password || !rePassword) {
-          setMessage("Мэдээллийг бүрэн бөглөнө үү!!!");
-          setIsAlert(true);
-          return;
-        }
-        if (password !== rePassword) {
-          setMessage("Нууц үг хоорондоо таарахгүй байна. !!!");
-          setIsAlert(true);
-          return;
-        }
+    const signUp = async (name, email, password) => {
+        
         try {
-          const res = await axios.post("http://localhost:8010/signup", {
+          const res = await axios.post("http://localhost:8010/users/signup", {
             name,
             email,
             password,
@@ -53,7 +44,7 @@ export const UserProvider=({children})=>{
           console.log("res", res);
           setMessage(res.data.message);
           setIsAlert(true);
-          setSignIn(true);
+          setIsSignIn(true);
         } catch (error) {
           console.log("Error", error);
         }

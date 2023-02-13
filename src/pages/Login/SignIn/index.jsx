@@ -15,8 +15,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../../context";
 
-const Signin = () => {
-  const { signUp, message, setMessage, isAlert, setIsAlert, setIsSignIn } =
+const Signin = ({ handleClose }) => {
+  const { login, message, setMessage, isAlert, setIsAlert, setIsSignIn } =
     useAuth();
 
   const [email, setEmail] = useState("");
@@ -33,7 +33,8 @@ const Signin = () => {
       setMessage("Хэрэглэгчийн мэдээлэл хоосон байна");
       return;
     }
-    signUp("Name", email, password);
+    login(email, password);
+    handleClose();
   };
   return (
     <Container component="main" maxWidth="xs" sx={{ bgcolor: "white" }}>
