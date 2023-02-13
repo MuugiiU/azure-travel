@@ -4,6 +4,7 @@ import Offser from "../../components/Main/Offser";
 import Browse from "../../components/Main/Browse";
 import Plan from "../../components/Main/Plan";
 import Connect from "../../components/Main/Connect";
+import Stepper from "../../components/stepper";
 
 const Main = () => {
   return (
@@ -12,6 +13,7 @@ const Main = () => {
         <Offser />
         <Browse />
         <Plan />
+        <Stepper />
       </Container>
       <Connect />
     </Grid>
