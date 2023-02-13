@@ -17,18 +17,12 @@ import { Button, Grid } from "@mui/material";
 import { navItems } from "../../../data/navItems";
 import Modal from "@mui/material/Modal";
 import Login from "../../../pages/Login";
+import { useAuth } from "../../../context";
 
 const drawerWidth = 240;
 
-function Navbar({
-  window,
-  logout,
-  user,
-  setUser,
-  open,
-  handleClose,
-  handleOpen,
-}) {
+function Navbar({ window, logout, open, handleClose, handleOpen }) {
+  const { user, setUser } = useAuth();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Search_Card = () => {
-  return (
-   
-  )
-}
+  return <div></div>;
+};
 
-export default Search_Card
+export default Search_Card;

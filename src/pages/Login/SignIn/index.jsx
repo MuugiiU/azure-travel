@@ -13,14 +13,15 @@ import Container from "@mui/material/Container";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../../context";
 
-const Signin = ({ setIsSignIn, setUser, handleClose }) => {
+const Signin = () => {
+  const { signUp, message, setMessage, isAlert, setIsAlert, setIsSignIn } =
+    useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
   const [status, setStatus] = useState("error");
-  const [isAlert, setIsAlert] = useState(false);
-  const navigate = useNavigate();
   const changeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -30,30 +31,9 @@ const Signin = ({ setIsSignIn, setUser, handleClose }) => {
   const handleClick = () => {
     if (email === "" || password === "") {
       setMessage("Хэрэглэгчийн мэдээлэл хоосон байна");
-      setIsAlert(true);
       return;
     }
-    login(email, password);
-  };
-  const login = async (email, password) => {
-    try {
-      const res = await axios.post("http://localhost:8010/signin", {
-        email,
-        password,
-      });
-      console.log("Success", res.data.user);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      setStatus("success");
-      setMessage(res.data.message);
-      setIsAlert(true);
-      setUser(res.data.user);
-      handleClose();
-    } catch (error) {
-      console.log("ERROR: ", error);
-      setStatus("error");
-      setMessage(error.response.data.message);
-      setIsAlert(true);
-    }
+    signUp("Name", email, password);
   };
   return (
     <Container component="main" maxWidth="xs" sx={{ bgcolor: "white" }}>
@@ -117,7 +97,7 @@ const Signin = ({ setIsSignIn, setUser, handleClose }) => {
                 variant="text"
                 onClick={() => {
                   console.log("jj");
-                  setIsSignIn();
+                  setIsSignIn(false);
                 }}
               >
                 Бүртгүүлэх

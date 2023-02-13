@@ -12,6 +12,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Alert, Snackbar } from "@mui/material";
 import axios from "axios";
+import { UserContext } from "../../../context";
+import { useContext } from "react";
 
 const Signup = (props) => {
   const [email, setEmail] = useState("");
@@ -22,6 +24,8 @@ const Signup = (props) => {
   const [isAlert, setIsAlert] = useState("");
   const [message, setMessage] = useState("");
   const [state, setState] = useState("error");
+
+  const { setIsSignIn } = useContext(UserContext);
 
   const changeEmail = (e) => {
     setEmail(e.target.value);
@@ -35,35 +39,7 @@ const Signup = (props) => {
   const changeRePassword = (e) => {
     setRePassword(e.target.value);
   };
-
-  const signup = async () => {
-    console.log("WW");
-    if (!email || !name || !password || !rePassword) {
-      setMessage("Мэдээллийг бүрэн бөглөнө үү!!!");
-      setIsAlert(true);
-      return;
-    }
-    if (password !== rePassword) {
-      setMessage("Нууц үг хоорондоо таарахгүй байна. !!!");
-      setIsAlert(true);
-      return;
-    }
-    try {
-      const res = await axios.post("http://localhost:8010/signup", {
-        name,
-        email,
-        password,
-      });
-      console.log("res", res);
-      setState("success");
-      setMessage(res.data.message);
-      setIsAlert(true);
-      props.setSignIn(true);
-    } catch (error) {
-      console.log("Error", error);
-    }
-  };
-
+  const { signup } = useContext(UserContext);
   return (
     <Container component="main" maxWidth="xs" sx={{ bgcolor: "white" }}>
       <Snackbar
@@ -158,7 +134,7 @@ const Signup = (props) => {
               <Button
                 variant="text"
                 onClick={() => {
-                  props.setIsSignIn();
+                  setIsSignIn(true);
                 }}
               >
                 Нэвтрэх

@@ -10,11 +10,12 @@ import { Category, Email } from "@mui/icons-material";
 import BeachDetial from "./pages/Detials/BeachDetial";
 import Categories from "./pages/Categories";
 import Admin from "./pages/Admin";
-import { UserContext } from "./context";
+import { UserContext, UserProvider } from "./context";
 import CategoryTable from "./pages/Admin/component/cattable";
 
 
 function App() {
+  
   const [user,setUser] =useState(localStorage.getItem("user"));
   const [open,setOpen] =useState(false);
   const handleOpen =() =>{
@@ -30,7 +31,7 @@ function App() {
    }
 
   return (
-    <UserContext.Provider>
+    <UserProvider>
     <Navbar  sm="12" md="6"
     logout={logout}
     user={user}
@@ -51,7 +52,7 @@ function App() {
         </Routes>
        
   
-    </UserContext.Provider>
+    </UserProvider>
   );
 }
 
