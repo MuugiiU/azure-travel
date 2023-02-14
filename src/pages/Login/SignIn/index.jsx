@@ -13,20 +13,43 @@ import Container from "@mui/material/Container";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../../../context";
+import { useContext } from "react";
+import { UserContext } from "../../../App";
 
-const Signin = ({ handleClose }) => {
-  const { login, message, setMessage, isAlert, setIsAlert, setIsSignIn } =
-    useAuth();
-
+const Signin = ({ setIsSignIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("error");
+  const [isAlert, setIsAlert] = useState(false);
+  const [message, setMessage] = useState("");
+  const { handleClose, setUser } = useContext(UserContext);
+
   const changeEmail = (e) => {
     setEmail(e.target.value);
   };
   const changePassword = (e) => {
     setPassword(e.target.value);
+  };
+  const login = async (email, password) => {
+    console.log("eenn");
+    try {
+      const res = await axios.post("http://localhost:8010/users/signin", {
+        email,
+        password,
+      });
+      console.log("Success", res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      setStatus("success");
+      setMessage(res.data.message);
+      setIsAlert(true);
+      setUser(res.data.user);
+      // handleClose();
+    } catch (error) {
+      console.log("ERROR: ", error);
+      setStatus("error");
+      setMessage(error.response.data.message);
+      setIsAlert(true);
+    }
   };
   const handleClick = () => {
     if (email === "" || password === "") {

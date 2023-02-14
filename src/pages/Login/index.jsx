@@ -4,9 +4,9 @@ import SignUp from "./SignUp";
 import { useContext } from "react";
 import { UserContext } from "../../context";
 
-const Login = ({ handleClose, setUser }) => {
-  // const [isSignIn, setIsSignIn] = useState(true);
-  const { isSignIn, setIsSignIn } = useContext(UserContext);
+const Login = () => {
+  const [isSignIn, setIsSignIn] = useState(true);
+  // const { isSignIn, setIsSignIn } = useContext(UserContext);
   const changeMode = () => {
     console.log("SET", isSignIn);
     setIsSignIn(!isSignIn);
@@ -15,11 +15,7 @@ const Login = ({ handleClose, setUser }) => {
   return (
     <>
       {isSignIn ? (
-        <SignIn
-          setIsSignIn={changeMode}
-          handleClose={handleClose}
-          setUser={setUser}
-        />
+        <SignIn setIsSignIn={changeMode} />
       ) : (
         <SignUp setIsSignIn={changeMode} />
       )}

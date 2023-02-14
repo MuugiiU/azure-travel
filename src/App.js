@@ -1,5 +1,5 @@
 import "./App.css";
-import React,{ useState } from "react";
+import React,{ createContext, useState } from "react";
 import { Route, Routes} from "react-router-dom";
 import axios from 'axios';
 import Navbar from "./components/Hero/Nav";
@@ -10,9 +10,10 @@ import { Category, Email } from "@mui/icons-material";
 import BeachDetial from "./pages/Detials/BeachDetial";
 import Categories from "./pages/Categories";
 import Admin from "./pages/Admin";
-import { UserContext, UserProvider } from "./context";
+// import { UserContext, UserProvider } from "./context";
 import CategoryTable from "./pages/Admin/component/cattable";
 
+export const UserContext = createContext(null);
 
 function App() {
   
@@ -23,22 +24,19 @@ function App() {
     console.log("modal")}
   const handleClose =() => setOpen (false);
 
-   
+     
   
-   const logout=()=>{
-    localStorage.removeItem("user");
-    setUser(null);
-   }
+   
 
   return (
-    <UserProvider>
-    <Navbar  sm="12" md="6"
-    logout={logout}
-    user={user}
-    setUser={setUser}
-    open={open}
-    handleClose={handleClose}
-    handleOpen={handleOpen}/>
+    // <UserProvider>
+    <UserContext.Provider value={ 
+    {user,
+    setUser,
+    open,
+    handleClose,
+    handleOpen}}>
+    <Navbar  sm="12" md="6" />
    
       <Routes>
           <Route path='/login' element={<Login/>}/>
@@ -50,9 +48,9 @@ function App() {
           </Route>
    
         </Routes>
-       
+        </UserContext.Provider>
   
-    </UserProvider>
+    // </UserProvider>
   );
 }
 

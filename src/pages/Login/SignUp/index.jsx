@@ -21,11 +21,11 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
-  // const [isAlert, setIsAlert] = useState("");
-  // const [message, setMessage] = useState("");
-  // const [state, setState] = useState("error");
+  const [isAlert, setIsAlert] = useState("");
+  const [message, setMessage] = useState("");
+  const [state, setState] = useState("error");
 
-  const { setIsSignIn } = useContext(UserContext);
+  // const { setIsSignIn } = useContext(UserContext);
 
   const changeEmail = (e) => {
     setEmail(e.target.value);
@@ -39,9 +39,23 @@ const Signup = (props) => {
   const changeRePassword = (e) => {
     setRePassword(e.target.value);
   };
-  const { signUp, isAlert, setIsAlert, setMessage, message, state } =
-    useContext(UserContext);
-
+  // const { signUp, isAlert, setIsAlert, setMessage, message, state } =
+  //   useContext(UserContext);
+  const signUp = async (name, email, password) => {
+    try {
+      const res = await axios.post("http://localhost:8010/users/signup", {
+        name,
+        email,
+        password,
+      });
+      console.log("res", res);
+      setMessage(res.data.message);
+      setIsAlert(true);
+      props.setIsSignIn(true);
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
   const handleSubmit = () => {
     console.log("WW");
     if (!email || !name || !password || !rePassword) {
@@ -151,7 +165,7 @@ const Signup = (props) => {
               <Button
                 variant="text"
                 onClick={() => {
-                  setIsSignIn(true);
+                  props.setIsSignIn(true);
                 }}
               >
                 Нэвтрэх

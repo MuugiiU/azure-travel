@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,22 +13,26 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Button, Grid, Tooltip } from "@mui/material";
+import { Button, Grid, Tooltip, Avatar } from "@mui/material";
 import { navItems } from "../../../data/navItems";
 import Modal from "@mui/material/Modal";
 import Login from "../../../pages/Login";
 import { useAuth } from "../../../context";
 import { MenuItem, Menu } from "@mui/material";
-import { AdbIcon, Avatar } from "@mui/icons-material";
+// import { UserContext } from "../../../context";
+import { UserContext } from "../../../App";
+import { useEffect } from "react";
 
 const drawerWidth = 240;
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function Navbar({ window, logout, open, handleClose, handleOpen }) {
-  const { user, setUser } = useAuth();
+function Navbar({ window }) {
+  // const { user, setUser } = useAuth();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const { user, setUser, open, handleClose, handleOpen } =
+    useContext(UserContext);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -46,6 +50,17 @@ function Navbar({ window, logout, open, handleClose, handleOpen }) {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+  };
+  const handleLogout = (oper) => {
+    console.log(oper);
+    if (oper == "Logout") {
+      logout();
+    }
+    handleCloseNavMenu();
   };
 
   const drawer = (
@@ -132,15 +147,62 @@ function Navbar({ window, logout, open, handleClose, handleOpen }) {
                 </Button>
               ))}
               {user ? (
-                <Button
-                  onClick={() => {
-                    logout();
+                <Box
+                  sx={{
+                    padding: "0",
+                    fontWeight: "700",
+                    fontSize: "16px",
+                    color: "#fff",
+                    textTransform: "none",
+                    marginLeft: "2vw",
+                    opacity: "0.8",
                   }}
-                  sx={{ color: "white" }}
                 >
-                  Sign Out
-                </Button>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar
+                        alt="Remy Sharp"
+                        src="/static/images/avatar/2.jpg"
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: "45px" }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {settings.map((setting) => (
+                      <MenuItem
+                        key={setting}
+                        onClick={() => {
+                          handleLogout(setting);
+                        }}
+                      >
+                        <Typography textAlign="center">{setting}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
               ) : (
+                // <Button
+                //   onClick={() => {
+                //     logout();
+                //   }}
+                //   sx={{ color: "white" }}
+                // >
+                //   Sign Out
+                // </Button>
                 <Button
                   onClick={handleOpen}
                   sx={{
@@ -156,35 +218,6 @@ function Navbar({ window, logout, open, handleClose, handleOpen }) {
                   Sign In
                 </Button>
               )}
-            </Box>
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
             </Box>
           </Toolbar>
         </AppBar>
@@ -211,7 +244,7 @@ function Navbar({ window, logout, open, handleClose, handleOpen }) {
           </Drawer>
         </Box>
         <Modal open={open} onClose={handleClose}>
-          <Login handleClose={handleClose} setUser={setUser} />
+          <Login />
         </Modal>
       </Box>
     </Grid>
