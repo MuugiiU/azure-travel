@@ -13,20 +13,39 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Tooltip } from "@mui/material";
 import { navItems } from "../../../data/navItems";
 import Modal from "@mui/material/Modal";
 import Login from "../../../pages/Login";
 import { useAuth } from "../../../context";
+import { MenuItem, Menu } from "@mui/material";
+import { AdbIcon, Avatar } from "@mui/icons-material";
 
 const drawerWidth = 240;
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
 function Navbar({ window, logout, open, handleClose, handleOpen }) {
   const { user, setUser } = useAuth();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   const drawer = (
@@ -137,6 +156,35 @@ function Navbar({ window, logout, open, handleClose, handleOpen }) {
                   Sign In
                 </Button>
               )}
+            </Box>
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
           </Toolbar>
         </AppBar>
