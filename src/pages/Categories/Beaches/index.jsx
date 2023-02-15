@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { Button, Grid, Rating } from "@mui/material";
 import Typography from "@mui/material/Typography";
-// import BeachData from "../../../data/Catalog/Beach";
+
 import { Link } from "react-router-dom";
 
 const Beach = ({ filteredData }) => {

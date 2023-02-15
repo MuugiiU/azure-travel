@@ -2,14 +2,29 @@ import { Grid } from "@mui/material";
 import React from "react";
 import DetialCards from "./DetialCards";
 import { useParams } from "react-router-dom";
-import datas from "../../../data/datas";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const BeachDetial = () => {
   const { id } = useParams();
-  const Finddata = datas.find((data) => data.id === id);
-  console.log(Finddata);
+  const [detail, setDetail] = useState([]);
+
+  const GetDatas = async () => {
+    try {
+      const res = await axios.get("http://localhost:8010/datas");
+      const beachData = res.data?.datas?.find((data) => data.id === id);
+      setDetail(beachData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    GetDatas();
+  }, []);
+
   return (
     <Grid>
-      <DetialCards Finddata={Finddata} />
+      <DetialCards Finddata={detail} />
     </Grid>
   );
 };

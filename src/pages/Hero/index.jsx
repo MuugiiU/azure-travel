@@ -6,10 +6,22 @@ import Searchh from "../../components/Hero/Searchh";
 import Category from "../../components/Hero/Category";
 import Vacation from "../../components/Hero/Vacations";
 import Vacations from "../../components/Hero/Vacations";
-import { useState } from "react";
-import datas from "../../data/datas";
+import { useState, useEffect } from "react";
+import axios from "axios";
 const Hero = () => {
-  const [cardList, setCardList] = useState(datas);
+  const [cardList, setCardList] = useState([]);
+  const [datas, setDatas] = useState([]);
+  const GetDatas = async () => {
+    try {
+      const res = await axios.get("http://localhost:8010/datas");
+      setDatas(res.data.datas);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    GetDatas();
+  }, []);
   const handlechange = (e) => {
     const change = datas.filter((data) =>
       data.category.toLowerCase().includes(e.target.value)
