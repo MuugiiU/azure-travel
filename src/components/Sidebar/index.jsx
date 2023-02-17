@@ -8,13 +8,13 @@ import Button from "@mui/material/Button";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Typography } from "@mui/material";
 
-export default function TemporaryDrawer() {
+export default function Sidebar() {
   const [dataChange, setDataChange] = useState([]);
 
-  //delete wishlist start
-  const deleteWish = async (e) => {
+  //delete travels start
+  const deleteSidebar = async (e) => {
     try {
-      const res = await axios.delete(`http://localhost:8000/wishlist/${e}`, {});
+      const res = await axios.delete(`http://localhost:8000/travels/${e}`, {});
       getData();
       console.log("Success", res);
     } catch (err) {
@@ -23,17 +23,17 @@ export default function TemporaryDrawer() {
   };
   //delete wishlist end
 
-  //wishlist data avah hesegiin ehlel
+  //travels data avah hesegiin ehlel
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/wishlist");
-      const data = res.data.data.wishlist;
+      const res = await axios.get("http://localhost:8000/travels");
+      const data = res.data.data.travels;
       setDataChange(data);
     } catch (error) {
       console.log(error);
     }
   };
-  //wishlist data avah hesegiin tugsgul
+  //travels data avah hesegiin tugsgul
 
   useEffect(() => {
     getData();
@@ -167,7 +167,7 @@ export default function TemporaryDrawer() {
                   </Box>
                 </Box>
                 <Button
-                  onClick={() => deleteWish(data.id)}
+                  onClick={() => deleteSidebar(data.id)}
                   sx={{
                     width: "80px",
                     color: "black",
@@ -224,7 +224,7 @@ export default function TemporaryDrawer() {
     <div>
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>WishList</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>Sidebar</Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

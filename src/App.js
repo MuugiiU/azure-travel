@@ -30,7 +30,7 @@ function App() {
       value={{ user, setUser, open, handleClose, handleOpen }}
     >
       <Navbar sm="12" md="6" />
-
+     
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />

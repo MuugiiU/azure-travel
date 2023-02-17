@@ -22,6 +22,7 @@ import { MenuItem, Menu } from "@mui/material";
 // import { UserContext } from "../../../context";
 import { UserContext } from "../../../App";
 import { useEffect } from "react";
+import Sidebar from "../../Sidebar";
 
 const drawerWidth = 240;
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -245,6 +246,7 @@ function Navbar({ window }) {
         </Box>
         <Modal open={open} onClose={handleClose}>
           <Login />
+          <Sidebar />
         </Modal>
       </Box>
     </Grid>
