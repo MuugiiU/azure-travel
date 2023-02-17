@@ -31,7 +31,7 @@ const Signin = ({ setIsSignIn }) => {
     setPassword(e.target.value);
   };
   const login = async (email, password) => {
-    console.log("eenn");
+    console.log("een");
     try {
       const res = await axios.post("http://localhost:8010/users/signin", {
         email,
