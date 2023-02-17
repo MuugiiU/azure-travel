@@ -10,11 +10,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const Hero = () => {
   const [cardList, setCardList] = useState([]);
-  const [datas, setDatas] = useState([]);
+  const [travel, setTravel] = useState([]);
   const GetDatas = async () => {
     try {
-      const res = await axios.get("http://localhost:8010/datas");
-      setDatas(res.data.datas);
+      const res = await axios.get("http://localhost:8010/data/travels");
+      setTravel(res.data.travels);
     } catch (err) {
       console.log(err);
     }
@@ -23,8 +23,8 @@ const Hero = () => {
     GetDatas();
   }, []);
   const handlechange = (e) => {
-    const change = datas.filter((data) =>
-      data.category.toLowerCase().includes(e.target.value)
+    const change = travel.filter((travel) =>
+      travel.category.toLowerCase().includes(e.target.value)
     );
     setCardList(change);
   };

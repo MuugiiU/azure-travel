@@ -6,12 +6,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const Categories = () => {
   const { id } = useParams();
-  const [datas, setDatas] = useState([]);
+  const [travel, setTravel] = useState([]);
 
   const GetDatas = async () => {
     try {
-      const res = await axios.get("http://localhost:8010/datas");
-      setDatas(res.data.datas);
+      const res = await axios.get("http://localhost:8010/travels");
+      setTravel(res.data.travels);
+      console.log(setTravel);
     } catch (err) {
       console.log(err);
     }
@@ -21,7 +22,7 @@ const Categories = () => {
   }, []);
   console.log(id);
 
-  const filteredData = datas.filter((data) => data.category === id);
+  const filteredData = travel.filter((travel) => travel.category === id);
 
   return (
     <Grid sx={{ width: "100%", height: "60vh" }}>
