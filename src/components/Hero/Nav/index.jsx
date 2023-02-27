@@ -26,7 +26,7 @@ import Sidebar from "../../Sidebar";
 
 const drawerWidth = 240;
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
+const URL = "http://localhost:8010/wishlist";
 function Navbar({ window }) {
   // const { user, setUser } = useAuth();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -34,6 +34,7 @@ function Navbar({ window }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const { user, setUser, open, handleClose, handleOpen } =
     useContext(UserContext);
+  const [isSideBar, setIsSidebBar] = React.useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -62,6 +63,11 @@ function Navbar({ window }) {
       logout();
     }
     handleCloseNavMenu();
+  };
+
+  // sidebar duudaj bg function
+  const sideBar = () => {
+    setIsSidebBar(!isSideBar);
   };
 
   const drawer = (
@@ -129,6 +135,7 @@ function Navbar({ window }) {
             >
               trxvl.
             </Typography>
+            <Sidebar sideBar={sideBar} isSideBar={isSideBar} URL={URL} />
             <Box
               sx={{
                 display: { xs: "none", sm: "block" },
@@ -246,7 +253,6 @@ function Navbar({ window }) {
         </Box>
         <Modal open={open} onClose={handleClose}>
           <Login />
-          <Sidebar />
         </Modal>
       </Box>
     </Grid>

@@ -22,6 +22,8 @@ export default function Searchh({ handlechange }) {
     >
       <Paper
         xs={12}
+        sm={6}
+        md={4}
         sx={{
           p: "2px 4px",
           display: "flex",
@@ -46,8 +48,9 @@ export default function Searchh({ handlechange }) {
               <SearchIcon />
             </IconButton>
             <InputBase
-              sm={12}
-              md={6}
+              xs={12}
+              sm={6}
+              md={4}
               sx={{ ml: 1, width: "60%" }}
               placeholder="Search destinations, hotels"
               inputProps={{ "aria-label": "search google maps" }}
@@ -55,22 +58,22 @@ export default function Searchh({ handlechange }) {
             />
           </Box>
         </Grid>
-        <Grid sm={12} md={6}>
+        <Grid xs={12} sm={6} md={4}>
           <Button variant="text" sx={{ opacity: "0.7", color: "gray" }}>
             {" "}
             <CalendarTodayIcon /> Check in
           </Button>
         </Grid>
-        <Grid sm={12} md={6}>
+        <Grid xm={12} sm={6} md={4}>
           <Button variant="text" sx={{ color: "gray", opacity: "0.7" }}>
             <CalendarTodayIcon />
             Check out
           </Button>
         </Grid>
-        <Grid sm={12} md={6}>
+        <Grid xm={12} sm={6} md={4}>
           <Box sx={{ display: "flex" }}>
             <PermIdentityIcon sx={{ color: "gray" }} />
-            <Typography sm={12} md={6} sx={{ color: "gray" }}>
+            <Typography xm={12} sm={6} md={4} sx={{ color: "gray" }}>
               1 room, 2 adults
             </Typography>
           </Box>

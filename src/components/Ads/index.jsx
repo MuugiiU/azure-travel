@@ -20,6 +20,8 @@ const Ads = () => {
   };
   return (
     <Grid
+      xs={12}
+      sm={6}
       sx={{
         display: "flex",
         background: "url(./img/adsbg.png)",
@@ -31,6 +33,8 @@ const Ads = () => {
       }}
     >
       <Container
+        xs={12}
+        sm={6}
         sx={{
           marginTop: "4.9rem",
           width: "60%",

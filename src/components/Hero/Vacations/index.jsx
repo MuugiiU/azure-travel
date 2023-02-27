@@ -10,8 +10,9 @@ const Vacations = () => {
       </Typography>
 
       <Grid
-        sm={12}
-        md={8}
+        xs={12}
+        sm={6}
+        md={4}
         sx={{
           overflowX: "auto",
           overflowY: "hidden",
@@ -21,6 +22,9 @@ const Vacations = () => {
         }}
       >
         <Box
+          xs={12}
+          sm={6}
+          md={4}
           sx={{
             gap: "40px",
             display: "flex",
@@ -28,6 +32,9 @@ const Vacations = () => {
         >
           {vacationData.map((vacationData, index) => (
             <Box
+              xs={12}
+              sm={6}
+              md={4}
               key={index}
               sx={{
                 width: "300px",
@@ -39,8 +46,8 @@ const Vacations = () => {
               <img src={vacationData.img} alt="" />
               <Typography
                 xs={12}
-                sm={10}
-                md={6}
+                sm={6}
+                md={4}
                 variant="h3"
                 sx={{
                   color: "white",

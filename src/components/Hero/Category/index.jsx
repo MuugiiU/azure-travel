@@ -20,15 +20,18 @@ const Category = (filterData) => {
   }, []);
 
   return (
-    <Grid xs={12} sm={10} md={6} sx={{ marginTop: "3rem" }}>
+    <Grid sx={{ marginTop: "3rem" }}>
       <Typography variant="h3" sx={{ color: "white", fontSize: "32px" }}>
         {" "}
         Top categories
       </Typography>
-      <Grid xs="12" sm="8" md="6" sx={{ display: "flex", gap: "40px" }}>
+      <Grid xs={12} sm={8} md={6} sx={{ display: "flex", gap: "40px" }}>
         {categories.map((category, index) => {
           return (
             <NavLink
+              xs={12}
+              sm={8}
+              md={6}
               key={index}
               to={"/Categories/" + category.title}
               style={{ marginTop: "2rem", textDecoration: "none" }}

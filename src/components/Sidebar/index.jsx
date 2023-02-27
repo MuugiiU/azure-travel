@@ -5,16 +5,21 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Typography } from "@mui/material";
 
-export default function Sidebar() {
-  const [dataChange, setDataChange] = useState([]);
+// URL = axios hiih API
+// isSideBar = true false iig toggle ddog function
+// sideBat = boolean utga aguulah huvisagch
 
-  //delete travels start
-  const deleteSidebar = async (e) => {
+export default function Sidebar({ isSideBar, sideBar, URL }) {
+  const [dataChange, setDataChange] = useState([]);
+  const [count, setCount] = useState(0);
+
+  const deleteWish = async (e) => {
     try {
-      const res = await axios.delete(`http://localhost:8000/travels/${e}`, {});
+      const res = await axios.delete(URL + "/" + e, {});
       getData();
       console.log("Success", res);
     } catch (err) {
@@ -23,17 +28,18 @@ export default function Sidebar() {
   };
   //delete wishlist end
 
-  //travels data avah hesegiin ehlel
+  //wishlist data avah hesegiin ehlel
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/travels");
-      const data = res.data.data.travels;
+      const res = await axios.get(URL);
+      const data = res.data.data.wishlist;
+      setCount(data.length);
       setDataChange(data);
     } catch (error) {
       console.log(error);
     }
   };
-  //travels data avah hesegiin tugsgul
+  //wishlist data avah hesegiin tugsgul
 
   useEffect(() => {
     getData();
@@ -41,17 +47,6 @@ export default function Sidebar() {
   const [state, setState] = React.useState({
     right: false,
   });
-
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
 
   const list = (anchor) => (
     <Box
@@ -65,10 +60,8 @@ export default function Sidebar() {
       <Box
         sx={{
           display: "flex",
-          // justifyContent: "end",
           width: "100%",
           height: "50px",
-          // backgroundColor: "black",
         }}
       >
         <Box
@@ -83,7 +76,7 @@ export default function Sidebar() {
             YOUR WISHLIST
           </Typography>
         </Box>
-        <Button onClick={toggleDrawer(anchor, false)}>
+        <Button onClick={sideBar}>
           <ClearIcon sx={{ color: "black" }} />
         </Button>
       </Box>
@@ -106,7 +99,6 @@ export default function Sidebar() {
                 alignItems: "center",
                 width: "100%",
                 height: "150px",
-                // backgroundColor: "#e6e6e6",
                 borderBottom: "1px solid grey",
               }}
             >
@@ -167,7 +159,7 @@ export default function Sidebar() {
                   </Box>
                 </Box>
                 <Button
-                  onClick={() => deleteSidebar(data.id)}
+                  onClick={() => deleteWish(data.id)}
                   sx={{
                     width: "80px",
                     color: "black",
@@ -181,7 +173,6 @@ export default function Sidebar() {
                     },
                   }}
                 >
-                  {/* <ClearIcon sx={{ fontSize: "10px" }} /> */}
                   Remove
                 </Button>
               </Box>
@@ -224,12 +215,40 @@ export default function Sidebar() {
     <div>
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>Sidebar</Button>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
+          <Box
+            sx={{
+              position: "relative",
+              width: "65px",
+              height: "35px",
+            }}
           >
+            <Box
+              textAlign="center"
+              sx={{
+                position: "absolute",
+                top: "0px",
+                zIndex: "2",
+                fontSize: "10px",
+                left: "50%",
+                top: "18%",
+                transform: "translate(-50%)",
+              }}
+            >
+              {count}
+            </Box>
+            <Button
+              sx={{
+                width: "65px",
+                height: "35px",
+                position: "absolute",
+                top: "0px",
+              }}
+              onClick={sideBar}
+            >
+              <ShoppingCartIcon sx={{ fontSize: "2rem", color: "#007FFF" }} />
+            </Button>
+          </Box>
+          <Drawer anchor={anchor} open={isSideBar} onClose={sideBar}>
             {list(anchor)}
           </Drawer>
         </React.Fragment>

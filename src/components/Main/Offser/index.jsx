@@ -14,8 +14,6 @@ const Img = styled("img")({
 export default function Offser() {
   return (
     <Grid
-      xs={12}
-      md={4}
       sx={{
         top: "4.6rem",
         overflow: "hidden",
@@ -33,8 +31,6 @@ export default function Offser() {
         Offers
       </Typography>
       <Grid
-        xs={12}
-        sm={8}
         sx={{
           display: "flex",
           gap: "15px",
@@ -54,8 +50,6 @@ export default function Offser() {
         {OffserData.map((OffserData, index) => {
           return (
             <Paper
-              sm={12}
-              md={6}
               key={index}
               sx={{
                 height: "20%",
@@ -63,32 +57,19 @@ export default function Offser() {
                   theme.palette.mode === "dark" ? "#1A2027" : "#fff",
               }}
             >
-              <Grid
-                sm={12}
-                md={6}
-                sx={{ display: "flex", gap: "2rem", padding: "1rem" }}
-              >
+              <Grid sx={{ display: "flex", gap: "2rem", padding: "1rem" }}>
                 <Grid item>
-                  <ButtonBase sx={{ width: 200, height: 150, p: "5px" }}>
+                  <ButtonBase sx={{ width: 300, height: 150, p: "5px" }}>
                     <Img alt="complex" src={OffserData.imgURL} />
                   </ButtonBase>
                 </Grid>
                 <Grid
                   item
-                  xs={12}
-                  sm={6}
                   container
                   sx={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <Grid
-                    item
-                    xs={12}
-                    sm={10}
-                    md={6}
-                    container
-                    direction="column"
-                  >
-                    <Grid item sx={{ width: "18.75rem", height: "8.75rem" }}>
+                  <Grid item container direction="column">
+                    <Grid item sx={{ width: "16rem", height: "8.75rem" }}>
                       <Typography
                         gutterBottom
                         variant="p"

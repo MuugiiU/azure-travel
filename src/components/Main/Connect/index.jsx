@@ -8,8 +8,10 @@ import connectData from "../../../data/connect";
 
 const Connect = () => {
   return (
-    <Grid>
+    <Grid xs={12} sm={6} md={4}>
       <Grid
+        xs={12}
+        sm={6}
         sx={{
           display: "flex",
           gap: "10px",
@@ -19,7 +21,7 @@ const Connect = () => {
         }}
       >
         {connectData.map((connectData, index) => (
-          <Card sx={{ width: 550 }} key={index}>
+          <Card xs={12} sm={6} md={4} sx={{ width: 550 }} key={index}>
             <CardMedia
               sx={{ height: "200px", width: "200p" }}
               image={connectData.imgURL}
