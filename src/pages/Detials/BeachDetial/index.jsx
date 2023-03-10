@@ -12,7 +12,7 @@ const BeachDetial = () => {
   const GetDatas = async () => {
     try {
       const res = await axios.get("http://localhost:8010/travels");
-      const beachData = res.data?.travels?.find((data) => data.id === id);
+      const beachData = res.travels?.find((data) => data.id === id);
       setDetail(beachData);
     } catch (err) {
       console.log(err);

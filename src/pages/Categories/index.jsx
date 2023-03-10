@@ -4,14 +4,14 @@ import Beaches from "./Beaches";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-const Categories = () => {
+const Category = () => {
   const { id } = useParams();
   const [travel, setTravel] = useState([]);
 
   const GetDatas = async () => {
     try {
       const res = await axios.get("http://localhost:8010/travels");
-      setTravel(res.data.travels);
+      setTravel(res.travels);
       console.log(setTravel);
     } catch (err) {
       console.log(err);
@@ -31,4 +31,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default Category;

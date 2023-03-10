@@ -13,8 +13,8 @@ const Hero = () => {
   const [travel, setTravel] = useState([]);
   const GetDatas = async () => {
     try {
-      const res = await axios.get("http://localhost:8010/data/travels");
-      setTravel(res.data.travels);
+      const res = await axios.get("http://localhost:8010/travels");
+      setTravel(res.travels);
     } catch (err) {
       console.log(err);
     }
