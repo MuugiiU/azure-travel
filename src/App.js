@@ -30,11 +30,11 @@ function App() {
       value={{ user, setUser, open, handleClose, handleOpen }}
     >
       <Navbar sm="12" md="6" />
-     
+
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
-        <Route path="/Categories/:id" element={<Categories />} />
+        <Route path="/category/:id" element={<category />} />
         <Route path="/Detials/:id" element={<BeachDetial />} />
         <Route path="/admin" element={<Admin />}>
           <Route path="/admin/:id" element={<CategoryTable />} />

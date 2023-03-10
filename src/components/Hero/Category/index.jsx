@@ -9,8 +9,8 @@ const Category = (filterData) => {
   const [categories, setCategories] = useState([]);
   const GetCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:8010/categories");
-      setCategories(res.data.categories);
+      const res = await axios.get("http://localhost:8010/category");
+      setCategories(res.data.category);
     } catch (err) {
       console.log(err);
     }
@@ -33,7 +33,7 @@ const Category = (filterData) => {
               sm={8}
               md={6}
               key={index}
-              to={"/Categories/" + category.title}
+              to={"/category/" + category.title}
               style={{ marginTop: "2rem", textDecoration: "none" }}
             >
               <img src={category.imgURL} alt="" />
