@@ -11,7 +11,7 @@ const Category = () => {
   const GetDatas = async () => {
     try {
       const res = await axios.get("http://localhost:8010/travels");
-      setTravel(res.travels);
+      setTravel(res.data.travels);
       console.log(setTravel);
     } catch (err) {
       console.log(err);

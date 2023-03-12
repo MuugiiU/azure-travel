@@ -6,11 +6,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const Category = (filterData) => {
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
   const GetCategory = async () => {
     try {
       const res = await axios.get("http://localhost:8010/category");
-      setCategory(res.category);
+      setCategories(res.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -26,7 +26,7 @@ const Category = (filterData) => {
         Top categories
       </Typography>
       <Grid xs={12} sm={8} md={6} sx={{ display: "flex", gap: "40px" }}>
-        {category.map((category, index) => {
+        {categories.map((category, index) => {
           return (
             <NavLink
               xs={12}
@@ -36,7 +36,7 @@ const Category = (filterData) => {
               to={"/category/" + category.title}
               style={{ marginTop: "2rem", textDecoration: "none" }}
             >
-              <img src={category.imgURL} alt="" />
+              <img src={category.image} alt="" />
               <Typography
                 variant="h2"
                 sx={{ color: "white", fontSize: "16px", opacity: "0.4" }}
